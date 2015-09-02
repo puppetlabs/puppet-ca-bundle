@@ -1,4 +1,4 @@
-## Puppet Labs is now shipping cert bundle!
+## Puppet Labs is now shipping a CA cert bundle!
 
 The ["canonical", up-to-date Cert Authority bundle](https://github.com/bagder/ca-bundle/) currently provides 155 Root certificates. Puppet really only needs about 10% of them out of the box. So we're going to provide a stripped down Cert Authority bundle that allows connecting to the following services out of the box:
 
