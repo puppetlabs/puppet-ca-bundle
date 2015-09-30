@@ -8,11 +8,11 @@ CP          := cp -f
 RM          := rm -rf
 CHMOD       := chmod
 CHOWN       := chown
-BUNDLE      := ca-bundle.crt
+BUNDLE      := cert.pem
 USER        := $(shell id -u)
 GROUP       := $(shell id -g)
 PERMISSIONS := 0644
-DESTDIR     := $(shell $(OPENSSL) version -d | $(CUT) -d '"' -f 2)/certs
+DESTDIR     := $(shell $(OPENSSL) version -d | $(CUT) -d '"' -f 2)
 
 .DEFAULT_GOAL := bundle
 
