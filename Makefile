@@ -9,8 +9,8 @@ RM          := rm -rf
 CHMOD       := chmod
 CHOWN       := chown
 BUNDLE      := cert.pem
-USER        := $(shell id -u)
-GROUP       := $(shell id -g)
+USER        := $(shell id root |cut -d '=' -f2|cut -d '(' -f1)
+GROUP       := $(shell id root |cut -d '=' -f3|cut -d '(' -f1)
 PERMISSIONS := 0644
 DESTDIR     := $(shell $(OPENSSL) version -d | $(CUT) -d '"' -f 2)
 
