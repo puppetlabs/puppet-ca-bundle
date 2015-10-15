@@ -55,4 +55,11 @@ Coincidentally, Rubygems.org uses the AddTrust root certificates, so these certi
     StartCom Certification Authority 1.pem
     StartCom Certification Authority 2.pem
     StartCom Certification Authority G2.pem
-    UTN-USERFirst-Hardware.pem    
+    UTN-USERFirst-Hardware.pem
+    
+### DigiCert Root Certificates (GitHub)
+
+"DigiCert does not charge or require any special license agreement for the use and/or distribution of our root certificates. However, if your organization requires that you obtain a license agreement in order to include the DigiCert roots in your application, please email us at roots@digicert.com."
+
+    DigiCert High Assurance EV Root CA
+    DigiCert SHA2 Extended Validation Server CA
