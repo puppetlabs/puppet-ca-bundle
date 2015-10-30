@@ -13,6 +13,7 @@ USER        := $(shell id -u)
 GROUP       := $(shell id -g)
 PERMISSIONS := 0644
 DESTDIR     := $(shell $(OPENSSL) version -d | $(CUT) -d '"' -f 2)
+KEYSTORE    := puppet-cacerts
 
 .DEFAULT_GOAL := bundle
 
@@ -30,3 +31,20 @@ install: bundle
 
 uninstall:
 	$(RM) $(DESTDIR)/$(BUNDLE)
+
+keystore:
+	KEYTOOL = $(shell which keytool)
+	ifdef KEYTOOL
+		for pem_file in ./*.pem; do \
+			/bin/echo yes | $(KEYTOOL) -import \
+				-alias "$(basename "${pem_file}" .pem)" \
+				-keystore $(KEYSTORE) \
+				-storepass 'changeit' \
+				-file "${pem_file}" ; \
+		done
+		$(CP) $(KEYSTORE) $(DESTDIR)
+		$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
+		$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(KEYSTORE)
+	else
+		$(warning not creating keystore, keytool cannot be found)
+	endif
