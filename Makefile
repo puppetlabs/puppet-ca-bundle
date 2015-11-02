@@ -46,5 +46,5 @@ ifdef KEYTOOL
 	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
 	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(KEYSTORE)
 else
-	$(warning not creating keystore, keytool cannot be found)
+	$(error not creating keystore, keytool cannot be found)
 endif
