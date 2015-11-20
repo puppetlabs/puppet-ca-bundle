@@ -22,7 +22,7 @@ clean:
 	$(RM) $(BUNDLE)
 
 bundle: clean
-	$(CAT) ./*.pem > $(BUNDLE)
+	$(CAT) ./*.pem ./*.crt > $(BUNDLE)
 
 install: bundle
 	$(MKDIR) $(DESTDIR)
@@ -35,7 +35,7 @@ uninstall:
 
 keystore:
 ifdef KEYTOOL
-	for pem_file in ./*.pem; do \
+	for pem_file in ./*.pem ./*.crt; do \
 		/bin/echo yes | $(KEYTOOL) -import \
 			-alias $(basename "$${pem_file}" .pem) \
 			-keystore $(KEYSTORE) \
