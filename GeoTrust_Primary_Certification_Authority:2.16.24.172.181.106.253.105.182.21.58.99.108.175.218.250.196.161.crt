@@ -1,3 +1,7 @@
+# alias="GeoTrust Primary Certification Authority"
+# trust=CKA_TRUST_SERVER_AUTH
+# distrust=
+# openssl-trust=serverAuth
 -----BEGIN CERTIFICATE-----
 MIIDfDCCAmSgAwIBAgIQGKy1av1pthU6Y2yv2vrEoTANBgkqhkiG9w0BAQUFADBY
 MQswCQYDVQQGEwJVUzEWMBQGA1UEChMNR2VvVHJ1c3QgSW5jLjExMC8GA1UEAxMo

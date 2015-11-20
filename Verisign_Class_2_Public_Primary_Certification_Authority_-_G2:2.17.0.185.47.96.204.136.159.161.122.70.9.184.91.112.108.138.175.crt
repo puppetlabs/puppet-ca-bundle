@@ -1,3 +1,7 @@
+# alias="Verisign Class 2 Public Primary Certification Authority - G2"
+# trust=CKA_TRUST_EMAIL_PROTECTION
+# distrust=
+# openssl-trust=emailProtection
 -----BEGIN CERTIFICATE-----
 MIIDAzCCAmwCEQC5L2DMiJ+hekYJuFtwbIqvMA0GCSqGSIb3DQEBBQUAMIHBMQsw
 CQYDVQQGEwJVUzEXMBUGA1UEChMOVmVyaVNpZ24sIEluYy4xPDA6BgNVBAsTM0Ns

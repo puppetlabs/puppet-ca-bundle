@@ -1,3 +1,7 @@
+# alias="UTN USERFirst Hardware Root CA"
+# trust=CKA_TRUST_SERVER_AUTH
+# distrust=
+# openssl-trust=serverAuth
 -----BEGIN CERTIFICATE-----
 MIIEdDCCA1ygAwIBAgIQRL4Mi1AAJLQR0zYq/mUK/TANBgkqhkiG9w0BAQUFADCB
 lzELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlVUMRcwFQYDVQQHEw5TYWx0IExha2Ug

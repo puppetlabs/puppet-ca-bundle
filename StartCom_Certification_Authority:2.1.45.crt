@@ -1,3 +1,7 @@
+# alias="StartCom Certification Authority"
+# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
+# distrust=
+# openssl-trust=codeSigning emailProtection serverAuth
 -----BEGIN CERTIFICATE-----
 MIIHhzCCBW+gAwIBAgIBLTANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJJTDEW
 MBQGA1UEChMNU3RhcnRDb20gTHRkLjErMCkGA1UECxMiU2VjdXJlIERpZ2l0YWwg
