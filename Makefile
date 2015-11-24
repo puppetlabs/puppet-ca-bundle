@@ -1,4 +1,4 @@
-PATH        := /bin:/usr/bin:/usr/local/bin
+PATH        := /opt/puppetlabs/puppet/bin:/bin:/usr/bin:/usr/local/bin
 SHELL       := /bin/sh
 OPENSSL     := openssl
 CAT         := cat
@@ -20,9 +20,18 @@ KEYTOOL     := $(shell which keytool)
 
 clean:
 	$(RM) $(BUNDLE)
+	$(RM) ./pl_*.pem
+	$(RM) $(KEYSTORE)
 
 bundle: clean
 	$(CAT) ./*.crt > $(BUNDLE)
+
+pemify:
+	for crt_file in ./*.crt; do \
+		$(OPENSSL) x509 -in "$${crt_file}" \
+		-out "pl_"$$(basename "$${crt_file}" .crt )".pem" \
+		-outform pem ; \
+	done
 
 install: bundle
 	$(MKDIR) $(DESTDIR)
@@ -33,11 +42,11 @@ install: bundle
 uninstall:
 	$(RM) $(DESTDIR)/$(BUNDLE)
 
-keystore:
+keystore: pemify
 ifdef KEYTOOL
-	for pem_file in ./*.crt; do \
+	for pem_file in ./pl_*.pem; do \
 		/bin/echo yes | $(KEYTOOL) -import \
-			-alias $(basename "$${pem_file}" .pem) \
+			-alias $$(basename "$${pem_file}" .pem | sed -e 's/^pl_//') \
 			-keystore $(KEYSTORE) \
 			-storepass 'changeit' \
 			-file "$${pem_file}" ; \
