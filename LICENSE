@@ -1,0 +1,8 @@
+These files come from other projects and are just here to make assembly easier. They retrain their original licenses.
+
+
+certdata2pem.py - GPLv2+
+certdata.txt - MPL 2.0
+Makefile - Apache 2.0
+mk-ca-bundle.pl - Curl License (MIT/X Windows style)
+
