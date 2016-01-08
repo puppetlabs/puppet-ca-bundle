@@ -6,3 +6,5 @@ certdata.txt - MPL 2.0
 Makefile - Apache 2.0
 mk-ca-bundle.pl - Curl License (MIT/X Windows style)
 
+The resulting 'cert.pem' file is licensed under the same license as the source file (certdata.txt): MPL 2.0
+
