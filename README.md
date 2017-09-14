@@ -9,9 +9,11 @@ are grabbing the Mozilla '[certdata.txt](https://mxr.mozilla.org/mozilla/source/
 * Remove old .crt files: `rm *.crt`
 * Download new certdata: `perl mk-ca-bundle.pl`
 * Split into PEM files: `python certdata2pem.py`
-* Remove ca-bundle.crt
-* Remove anything that is untrusted (i.e. with anything in the distrust= field)
-  or doesn't explicitly list serverAuth in the openssl-trust field.
+* Remove ca-bundle.crt: `rm ca-bundle.crt`
+* Remove .p11-kit files: `rm *.p11-kit`
+* Remove anything that is untrusted (i.e. with anything in the distrust field)
+  or that doesn't explicitly list serverAuth in the openssl-trust field:
+  `./remove_unwanted_files.sh`
 
 ### Maintainers
 release-team@puppetlabs.com
