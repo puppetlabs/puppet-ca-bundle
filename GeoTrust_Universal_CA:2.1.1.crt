@@ -1,7 +1,7 @@
 # alias="GeoTrust Universal CA"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning emailProtection serverAuth
+# openssl-trust=emailProtection serverAuth
 -----BEGIN CERTIFICATE-----
 MIIFaDCCA1CgAwIBAgIBATANBgkqhkiG9w0BAQUFADBFMQswCQYDVQQGEwJVUzEW
 MBQGA1UEChMNR2VvVHJ1c3QgSW5jLjEeMBwGA1UEAxMVR2VvVHJ1c3QgVW5pdmVy

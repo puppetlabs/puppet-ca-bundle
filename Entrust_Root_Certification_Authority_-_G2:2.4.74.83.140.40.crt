@@ -1,7 +1,7 @@
 # alias="Entrust Root Certification Authority - G2"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning emailProtection serverAuth
+# openssl-trust=emailProtection serverAuth
 -----BEGIN CERTIFICATE-----
 MIIEPjCCAyagAwIBAgIESlOMKDANBgkqhkiG9w0BAQsFADCBvjELMAkGA1UEBhMC
 VVMxFjAUBgNVBAoTDUVudHJ1c3QsIEluYy4xKDAmBgNVBAsTH1NlZSB3d3cuZW50

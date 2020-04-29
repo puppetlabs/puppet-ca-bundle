@@ -1,7 +1,7 @@
 # alias="OISTE WISeKey Global Root GB CA"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning emailProtection serverAuth
+# openssl-trust=emailProtection serverAuth
 -----BEGIN CERTIFICATE-----
 MIIDtTCCAp2gAwIBAgIQdrEgUnTwhYdGs/gjGvbCwDANBgkqhkiG9w0BAQsFADBt
 MQswCQYDVQQGEwJDSDEQMA4GA1UEChMHV0lTZUtleTEiMCAGA1UECxMZT0lTVEUg

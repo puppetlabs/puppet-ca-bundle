@@ -1,7 +1,7 @@
 # alias="Izenpe.com"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning serverAuth
+# openssl-trust=serverAuth
 -----BEGIN CERTIFICATE-----
 MIIF8TCCA9mgAwIBAgIQALC3WhZIX7/hy/WL1xnmfTANBgkqhkiG9w0BAQsFADA4
 MQswCQYDVQQGEwJFUzEUMBIGA1UECgwLSVpFTlBFIFMuQS4xEzARBgNVBAMMCkl6

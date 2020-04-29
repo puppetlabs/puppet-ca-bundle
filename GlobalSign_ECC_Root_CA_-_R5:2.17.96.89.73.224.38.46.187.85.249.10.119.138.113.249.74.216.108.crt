@@ -1,7 +1,7 @@
 # alias="GlobalSign ECC Root CA - R5"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning emailProtection serverAuth
+# openssl-trust=emailProtection serverAuth
 -----BEGIN CERTIFICATE-----
 MIICHjCCAaSgAwIBAgIRYFlJ4CYuu1X5CneKcflK2GwwCgYIKoZIzj0EAwMwUDEk
 MCIGA1UECxMbR2xvYmFsU2lnbiBFQ0MgUm9vdCBDQSAtIFI1MRMwEQYDVQQKEwpH

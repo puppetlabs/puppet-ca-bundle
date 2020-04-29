@@ -1,7 +1,7 @@
 # alias="VeriSign Class 3 Public Primary Certification Authority - G4"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_EMAIL_PROTECTION CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning emailProtection serverAuth
+# openssl-trust=emailProtection serverAuth
 -----BEGIN CERTIFICATE-----
 MIIDhDCCAwqgAwIBAgIQL4D+I4wOIg9IZxIokYesszAKBggqhkjOPQQDAzCByjEL
 MAkGA1UEBhMCVVMxFzAVBgNVBAoTDlZlcmlTaWduLCBJbmMuMR8wHQYDVQQLExZW
