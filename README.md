@@ -15,6 +15,11 @@ are grabbing the Mozilla '[certdata.txt](https://mxr.mozilla.org/mozilla/source/
   or that doesn't explicitly list serverAuth in the openssl-trust field:
   `./remove_unwanted_files.sh`
 
+### Release
+* Tag the puppet-ca-bundle project with the next version number
+* Update the `configs/components/puppet-ca-bundle.json` file in puppet-runtime with the new version
+* [An automatic tagging job](https://jenkins-master-prod-1.delivery.puppetlabs.net/view/puppet-runtime/job/platform_puppet-runtime-tagging_automatic-date-tag/) will tag puppet-runtime and kickoff build pipelines
+
 ### Maintainers
 release-team@puppetlabs.com
 
