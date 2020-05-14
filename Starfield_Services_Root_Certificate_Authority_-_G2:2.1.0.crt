@@ -1,7 +1,7 @@
 # alias="Starfield Services Root Certificate Authority - G2"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning serverAuth
+# openssl-trust=serverAuth
 -----BEGIN CERTIFICATE-----
 MIID7zCCAtegAwIBAgIBADANBgkqhkiG9w0BAQsFADCBmDELMAkGA1UEBhMCVVMx
 EDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxJTAjBgNVBAoT

@@ -1,7 +1,7 @@
 # alias="thawte Primary Root CA - G3"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning serverAuth
+# openssl-trust=serverAuth
 -----BEGIN CERTIFICATE-----
 MIIEKjCCAxKgAwIBAgIQYAGXt0an6rS0mtZLL/eQ+zANBgkqhkiG9w0BAQsFADCB
 rjELMAkGA1UEBhMCVVMxFTATBgNVBAoTDHRoYXd0ZSwgSW5jLjEoMCYGA1UECxMf

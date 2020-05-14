@@ -1,7 +1,7 @@
 # alias="EE Certification Centre Root CA"
-# trust=CKA_TRUST_CODE_SIGNING CKA_TRUST_SERVER_AUTH
+# trust=CKA_TRUST_SERVER_AUTH
 # distrust=
-# openssl-trust=codeSigning serverAuth
+# openssl-trust=serverAuth
 -----BEGIN CERTIFICATE-----
 MIIEAzCCAuugAwIBAgIQVID5oHPtPwBMyonY43HmSjANBgkqhkiG9w0BAQUFADB1
 MQswCQYDVQQGEwJFRTEiMCAGA1UECgwZQVMgU2VydGlmaXRzZWVyaW1pc2tlc2t1
