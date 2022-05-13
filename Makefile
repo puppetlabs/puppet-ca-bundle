@@ -14,6 +14,7 @@ GROUP       := $(shell id -g)
 PERMISSIONS := 0644
 DESTDIR     := $(shell $(OPENSSL) version -d | $(CUT) -d '"' -f 2)
 KEYSTORE    := puppet-cacerts
+STORETYPE   := JKS
 KEYTOOL     := $(shell which keytool)
 
 .DEFAULT_GOAL := bundle
@@ -48,6 +49,7 @@ ifdef KEYTOOL
 		/bin/echo yes | $(KEYTOOL) -import \
 			-alias $$(basename "$${pem_file}" .pem | sed -e 's/^pl_//') \
 			-keystore $(KEYSTORE) \
+			-storetype $(STORETYPE) \
 			-storepass 'changeit' \
 			-file "$${pem_file}" ; \
 	done
