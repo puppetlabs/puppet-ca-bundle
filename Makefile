@@ -59,3 +59,10 @@ ifdef KEYTOOL
 else
 	$(error not creating keystore, keytool cannot be found)
 endif
+
+refresh-certs: clean
+	$(RM) *.crt
+	perl mk-ca-bundle.pl
+	python certdata2pem.py
+	$(RM) -f *.p11-kit
+	./remove_unwanted_files.sh
