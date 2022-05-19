@@ -17,14 +17,14 @@ KEYSTORE    := puppet-cacerts
 STORETYPE   := JKS
 KEYTOOL     := $(shell which keytool)
 
-.DEFAULT_GOAL := bundle
+.DEFAULT_GOAL := install
 
 clean:
 	$(RM) $(BUNDLE)
 	$(RM) ./pl_*.pem
 	$(RM) $(KEYSTORE)
 
-bundle: clean
+bundle:
 	$(CAT) ./*.crt > $(BUNDLE)
 
 pemify:
@@ -33,15 +33,6 @@ pemify:
 		-out "pl_"$$(basename "$${crt_file}" .crt )".pem" \
 		-outform pem ; \
 	done
-
-install: bundle
-	$(MKDIR) $(DESTDIR)
-	$(CP) $(BUNDLE) $(DESTDIR)
-	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(BUNDLE)
-	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(BUNDLE)
-
-uninstall:
-	$(RM) $(DESTDIR)/$(BUNDLE)
 
 keystore: pemify
 ifdef KEYTOOL
@@ -53,12 +44,12 @@ ifdef KEYTOOL
 			-storepass 'changeit' \
 			-file "$${pem_file}" ; \
 	done
-	$(CP) $(KEYSTORE) $(DESTDIR)
-	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
-	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(KEYSTORE)
+	$(RM) ./pl_*.pem
 else
 	$(error not creating keystore, keytool cannot be found)
 endif
+
+prepare: clean bundle keystore
 
 refresh-certs: clean
 	$(RM) *.crt
@@ -66,3 +57,16 @@ refresh-certs: clean
 	python certdata2pem.py
 	$(RM) -f *.p11-kit
 	./remove_unwanted_files.sh
+
+install:
+	$(MKDIR) $(DESTDIR)
+	$(CP) $(BUNDLE) $(DESTDIR)
+	$(CP) $(KEYSTORE) $(DESTDIR)
+	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(BUNDLE)
+	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
+	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(BUNDLE)
+	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(KEYSTORE)
+
+uninstall:
+	$(RM) $(DESTDIR)/$(BUNDLE)
+	$(RM) $(DESTDIR)/$(KEYSTORE)

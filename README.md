@@ -7,6 +7,7 @@ are grabbing the Mozilla '[certdata.txt](https://mxr.mozilla.org/mozilla/source/
 
 ### Instructions
 * Run `make refresh-certs` to download new certs, clean out those we do not want, and format them for this repo
+* Run `make prepare` to create the cert bundle and keystore that will be installed in puppet-runtime builds
 
 ### Release
 * Tag the puppet-ca-bundle project with the next version number
