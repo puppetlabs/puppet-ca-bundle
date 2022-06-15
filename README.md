@@ -6,10 +6,8 @@ The ["canonical", up-to-date Cert Authority bundle](https://curl.se/docs/caextra
 
 ## Instructions
 
-* Remove old .crt files: `rm *.crt`
-* Download new certdata: `perl mk-ca-bundle.pl`
-* Split into PEM files: `python certdata2pem.py`
-* Run `./remove_unwanted_files.sh` to remove temporary and otherwise unwanted leftover files.
+* Run `make refresh-certs` to download new certs, clean out those we do not want, and format them for this repo
+* Run `make prepare` to create the cert bundle and keystore that will be installed in puppet-runtime builds
 
 ## Release
 
