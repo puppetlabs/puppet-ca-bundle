@@ -2,7 +2,13 @@
 export PATH=/bin:/usr/bin
 
 # Remove files that have something in the distrust field
-grep -l '^# distrust=.' ./*.crt | xargs rm
+for cert in ./*.crt
+do
+    [[ -e "$cert" ]] || break
+    if grep -q '^# distrust=.' "$cert"; then
+        rm "$cert"
+    fi
+done
 
 # Remove files that don't have serverAuth in the openssl-trust field
 for cert in ./*.crt

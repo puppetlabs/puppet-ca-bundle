@@ -14,15 +14,17 @@ GROUP       := $(shell id -g)
 PERMISSIONS := 0644
 DESTDIR     := $(shell $(OPENSSL) version -d | $(CUT) -d '"' -f 2)
 KEYSTORE    := puppet-cacerts
+KEYSTOREFIPS:= $(KEYSTORE)-fips
 STORETYPE   := JKS
 KEYTOOL     := $(shell which keytool)
+BCFIPS      := /opt/puppetlabs/share/java/bc-fips.jar
 
 .DEFAULT_GOAL := install
 
 clean:
 	$(RM) $(BUNDLE)
 	$(RM) ./pl_*.pem
-	$(RM) $(KEYSTORE)
+	$(RM) $(KEYSTORE) $(KEYSTOREFIPS)
 
 bundle:
 	$(CAT) ./*.crt > $(BUNDLE)
@@ -36,12 +38,26 @@ pemify:
 
 keystore: pemify
 ifdef KEYTOOL
+	if [ ! -e $(BCFIPS) ]; then \
+		echo "not creating FIPS keystore, $(BCFIPS) is missing. Install the latest version from https://builds.delivery.puppetlabs.net/pe-bouncy-castle-jars/"; \
+		exit 1; \
+	fi
 	for pem_file in ./pl_*.pem; do \
 		/bin/echo yes | $(KEYTOOL) -import \
 			-alias $$(basename "$${pem_file}" .pem | sed -e 's/^pl_//') \
 			-keystore $(KEYSTORE) \
 			-storetype $(STORETYPE) \
 			-storepass 'changeit' \
+			-file "$${pem_file}" ; \
+	done
+	for pem_file in ./pl_*.pem; do \
+		/bin/echo yes | $(KEYTOOL) -import \
+			-alias $$(basename "$${pem_file}" .pem | sed -e 's/^pl_//') \
+			-keystore $(KEYSTOREFIPS) \
+			-storetype BCFKS \
+			-storepass 'changeit' \
+			-providerclass org.bouncycastle.jcajce.provider.BouncyCastleFipsProvider \
+			-providerpath $(BCFIPS) \
 			-file "$${pem_file}" ; \
 	done
 	$(RM) ./pl_*.pem
@@ -57,13 +73,20 @@ refresh-certs: clean
 	python certdata2pem.py
 	./remove_unwanted_files.sh
 
-install:
+install-bundle:
 	$(MKDIR) $(DESTDIR)
 	$(CP) $(BUNDLE) $(DESTDIR)
-	$(CP) $(KEYSTORE) $(DESTDIR)
 	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(BUNDLE)
-	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
 	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(BUNDLE)
+
+install: install-bundle
+	$(CP) $(KEYSTORE) $(DESTDIR)
+	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
+	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(KEYSTORE)
+
+install-fips: install-bundle
+	$(CP) $(KEYSTOREFIPS) $(DESTDIR)/$(KEYSTORE)
+	$(CHOWN) $(USER):$(GROUP) $(DESTDIR)/$(KEYSTORE)
 	$(CHMOD) $(PERMISSIONS) $(DESTDIR)/$(KEYSTORE)
 
 uninstall:
