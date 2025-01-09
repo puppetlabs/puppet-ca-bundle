@@ -1,5 +1,7 @@
 # Puppet is now shipping a CA cert bundle!
 
+This repository is archived and Perforce will no longer be updating this repository. For more information, see [this Puppet blog post](https://www.puppet.com/blog/open-source-puppet-updates-2025).
+
 The ["canonical", up-to-date Cert Authority bundle](https://curl.se/docs/caextract.html) currently provides many root certificates. We grab the Mozilla '[certdata.txt](https://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt?raw=1)', use the 'certdata2pem.py' script from Red Hat to split that into PEM files, and remove anything that is untrusted
 (i.e. with anything in the distrust= field), or doesn't explicitly list serverAuth in the openssl-trust field. The result lines up with the linked
 [curl bundle above](https://github.com/bagder/ca-bundle/).
